@@ -3,8 +3,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int arr[102];
-
 int main(){
 
 	int t;
