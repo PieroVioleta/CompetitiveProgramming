@@ -7,33 +7,22 @@ Ejm:
 */
 #include <bits/stdc++.h>
 using namespace std;
-
-int suma(string s){
-	int sum = 0;
-	for(int i = 0; i < s.size(); i++){
-		sum += int(s[i]) - 48;
+ 
+int depth(string numb) {
+	if (numb == "9") return 1;
+	if (numb.size() == 1) return -10000;
+	int sumDig = 0;
+	for (char c : numb) {
+		sumDig += c - '0';
 	}
-	return sum;
+	return 1 + depth(to_string(sumDig));
 }
-
-int ans(string s){
-	int cont = 0;
-	if(suma(s) % 9 != 0 || s == "0") return 0;
-	
-	else{
-		while(suma(s) != 9){
-			s = to_string(suma(s));
-			cont++;
-		}		
-	}
-	
-	return cont + 1;
-}
-
+ 
 int main() {
 	string s;
 	cin >> s;
-	cout << ans(s);
+	int answer = depth(s);
+	if (answer < 0) cout << 0 << endl;
+	else cout << answer << endl;
 	return 0;
-	
 }
